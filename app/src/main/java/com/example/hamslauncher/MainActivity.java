@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     public ArrayList<AppInfo> res;
     private int in;
     ImageView imageView;
-    //int appsize;
+    int appsize;
 
 
     @Override
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         }
         //int maximum = apps.size();
         Random rand = new Random();
-        //appsize = apps.size();
+        appsize = apps.size();
         in = rand.nextInt(apps.size());
         imageView = (ImageView) findViewById(R.id.iconButton);
         imageView.setImageDrawable(res.get(in).icon);
@@ -168,6 +168,12 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         Log.d(DEBUG_TAG, "onSingleTapConfirmed: " + event.toString());
         textView = (TextView) findViewById(R.id.textView);
         textView.setText("On single tap confirmed");
+        Random rand = new Random();
+        in = rand.nextInt(appsize);
+        imageView.setImageDrawable(res.get(in).icon);
+        //Intent launchIntent = getPackageManager().getLaunchIntentForPackage(res.get(in).packageName);
+
+        //startActivity(launchIntent);
         return true;
     }
 
